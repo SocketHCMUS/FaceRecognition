@@ -189,8 +189,8 @@ if __name__ == "__main__":
     #print("Training complete!")
 
     # STEP 2: Using the trained classifier, make predictions for unknown images
-    for image_file in os.listdir("knn_examples/test"):
-        full_file_path = os.path.join("knn_examples/test", image_file)
+    for image_file in os.listdir("knn_examples/test/Alejandro_Toledo"):
+        full_file_path = os.path.join("knn_examples/test/Alejandro_Toledo", image_file)
 
         print("Looking for faces in {}".format(image_file))
 
@@ -203,4 +203,4 @@ if __name__ == "__main__":
             print("- Found {} at ({}, {})".format(name, left, top))
 
         # Display results overlaid on an image
-        show_prediction_labels_on_image(os.path.join("knn_examples/test", image_file), predictions)
+        show_prediction_labels_on_image(os.path.join("knn_examples/test/Alejandro_Toledo", image_file), predictions)
