@@ -191,12 +191,13 @@ if __name__ == "__main__":
     # STEP 2: Using the trained classifier, make predictions for unknown images
 
     testPeople = 'knn_examples/test/'
-    testPeople += 'Jean_Chretien'
+    testPeople += 'Ariel_Sharon'
     
     for image_file in os.listdir(testPeople):
         full_file_path = os.path.join(testPeople, image_file)
 
-        print("Looking for faces in {}".format(image_file))
+        ##print("Looking for faces in {}".format(image_file))
+        print(image_file, end=" ")
 
         # Find all people in the image using a trained classifier model
         # Note: You can pass in either a classifier file name or a classifier model instance
@@ -204,7 +205,8 @@ if __name__ == "__main__":
 
         # Print results on the console
         for name, (top, right, bottom, left) in predictions:
-            print("- Found {} at ({}, {})".format(name, left, top))
+            ##print("- Found {} at ({}, {})\n".format(name, left, top))
+            print("- {}\n".format(name))
 
         # Display results overlaid on an image
         ##show_prediction_labels_on_image(os.path.join(testPeople, image_file), predictions)
