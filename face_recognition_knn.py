@@ -192,7 +192,7 @@ if __name__ == "__main__":
 
     #file = open("knn_examples/test.txt", "w")
     #file.write("______test_____\n\n\n")
-    test = 'knn_examples/test_20/'
+    test = 'knn_examples/test_-50/'
     for people in os.listdir(test):
         testPeople = test + people
         count = 0
@@ -221,7 +221,7 @@ if __name__ == "__main__":
             # Display results overlaid on an image
             #show_prediction_labels_on_image(os.path.join(testPeople, image_file), predictions)
 
-        print(people, " - ", true/count*100, "%\n\n")
+        print(people, " - ", true/count*100, "% (", true, "/", count, ")\n\n")
         #file.write(people, " - ", true/count*100, "%\n\n")
 
     #file.close()
