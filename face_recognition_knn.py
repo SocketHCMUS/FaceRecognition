@@ -190,23 +190,38 @@ if __name__ == "__main__":
 
     # STEP 2: Using the trained classifier, make predictions for unknown images
 
-    testPeople = 'knn_examples/test/'
-    testPeople += 'Ariel_Sharon'
-    
-    for image_file in os.listdir(testPeople):
-        full_file_path = os.path.join(testPeople, image_file)
+    #file = open("knn_examples/test.txt", "w")
+    #file.write("______test_____\n\n\n")
+    test = 'knn_examples/test_20/'
+    for people in os.listdir(test):
+        testPeople = test + people
+        count = 0
+        true = 0
+        for image_file in os.listdir(testPeople):
+            count+=1
+            full_file_path = os.path.join(testPeople, image_file)
 
-        ##print("Looking for faces in {}".format(image_file))
-        print(image_file, end=" ")
+            ##print("Looking for faces in {}".format(image_file))
+            print(image_file, end=" ")
+            #file.write(image_file, end=" ")
 
-        # Find all people in the image using a trained classifier model
-        # Note: You can pass in either a classifier file name or a classifier model instance
-        predictions = predict(full_file_path, model_path="trained_knn_model.clf")
+            # Find all people in the image using a trained classifier model
+            # Note: You can pass in either a classifier file name or a classifier model instance
+            predictions = predict(full_file_path, model_path="trained_knn_model.clf")
 
-        # Print results on the console
-        for name, (top, right, bottom, left) in predictions:
-            ##print("- Found {} at ({}, {})\n".format(name, left, top))
-            print("- {}\n".format(name))
+            # Print results on the console
+            for name, (top, right, bottom, left) in predictions:
+                ##print("- Found {} at ({}, {})\n".format(name, left, top))
+                print(" - ", name)
+                #file.write(" - ", name)
+                if people == name:
+                    true+=1
+                    break
 
-        # Display results overlaid on an image
-        ##show_prediction_labels_on_image(os.path.join(testPeople, image_file), predictions)
+            # Display results overlaid on an image
+            #show_prediction_labels_on_image(os.path.join(testPeople, image_file), predictions)
+
+        print(people, " - ", true/count*100, "%\n\n")
+        #file.write(people, " - ", true/count*100, "%\n\n")
+
+    #file.close()
